@@ -1,0 +1,169 @@
+=SE(Q19="AV";
+	"DADO(S) AVULSO(S)";
+		SE(NÚM.CARACT(Q19)>3;
+			SE(SE(ÉERROS(PROCV(M19;DEFINIR_TIPO;3;FALSO));
+				"";
+					PROCV(M19;DEFINIR_TIPO;3;FALSO))="PRT";
+						CONCATENAR("PROTOCOLOS Nº ";Q19;" - ";M19);"");
+							SE(SE(ÉERROS(PROCV(M19;DEFINIR_TIPO;3;FALSO));
+								"";
+									PROCV(M19;DEFINIR_TIPO;3;FALSO))="PRT";
+										CONCATENAR("PROTOCOLO Nº ";Q19;" - ";M19);""))
+)
+
+///////////////////////
+
+=SE(ENTIPO<>"";
+	SE(E(ESQUERDA(ENTIPO;1)="A";DIREITA(ENTIPO;1)="S");
+		"AME - SECUNDARISTA";
+			SE(E(ESQUERDA(ENTIPO;1)="A";DIREITA(ENTIPO;1)="U");
+				"AME - UNIVERSITÁRIO";
+					SE(E(ESQUERDA(ENTIPO;1)="U";DIREITA(ENTIPO;1)="S");
+						"UMESCA - SECUNDARISTA";
+							SE(E(ESQUERDA(ENTIPO;1)="U";DIREITA(ENTIPO;1)="U");
+								"UMESCA - UNIVERSITÁRIO";
+									))));"DEFINA O TIPO PARA ESSA REMESSA: A/U"
+)
+
+////////////////////////
+
+=SE(REMESSA<>"";
+	SE(ESQUERDA(ENTIPO;1)="A";
+		SE(ESQUERDA(REMESSA;3)="352";"PRIMEIRA VIA";
+			SE(ESQUERDA(REMESSA;3)="356";"SEGUNDA VIA";
+				SE(ESQUERDA(REMESSA;3)="358";"ANTENA";
+					SE(ESQUERDA(REMESSA;3)="355";"REIMPRESSÃO";
+						SE(ESQUERDA(REMESSA;3)="359";"CORREÇÃO";
+							"REMESSA ERRADA!")))));
+	SE(ESQUERDA(ENTIPO;1)="U";
+		SE(ESQUERDA(REMESSA;3)="402";"PRIMEIRA VIA";
+			SE(ESQUERDA(REMESSA;3)="406";"SEGUNDA VIA";
+				SE(ESQUERDA(REMESSA;3)="408";"ANTENA";
+					SE(ESQUERDA(REMESSA;3)="405";"REIMPRESSÃO";
+						SE(ESQUERDA(REMESSA;3)="409";"CORREÇÃO";
+							"REMESSA ERRADA!")))));
+			""));
+				""
+
+)
+
+////////////////////////////////
+
+1- ESTA FÓRMULA POSSUI COMO PROPÓSITO ABREVIAR UMA PALAVRA DE UM NOME PRÓPRIO. SENDO QUE ESTE NOME POSSUA NO MÁXIMO 8 PALAVRAS.
+2- NÃO SERÃO ABREVIADOS NOMES COM MENOS DE QUATRO PALAVRAS OU SE NENHUMA DAS PALAVRAS FOREM ENCONTRADAS NA TABELA DE BUSCA.
+3- AS PALAVRAS 1, 2 E A ÚLTIMA DO NOME NUNCA SERÃO ABREVIADAS.
+4- ELA DEVE SER INSERIDA APARTIR DA CÉLULA I1, CASO CONTRÁRIO, NÃO FUNCIONARÁ CORRETAMENTE.
+
+=SE(H2<>"";
+	SE(H2<>"";
+		SE(ÉERROS(PROCV(G2;TABELA_B500;2;FALSO));
+			SE(ÉERROS(PROCV(F2;TABELA_B500;2;FALSO));
+				SE(ÉERROS(PROCV(E2;TABELA_B500;2;FALSO));
+					SE(ÉERROS(PROCV(D2;TABELA_B500;2;FALSO));
+						SE(ÉERROS(PROCV(C2;TABELA_B500;2;FALSO));
+							CONCATENAR(A2;" ";B2;" ";C2;" ";D2;" ";E2;" ";F2;" ";G2;" ";H2);
+								CONCATENAR(A2;" ";B2;" ";PROCV(C2;TABELA_B500;2;FALSO);" ";D2;" ";E2;" ";F2;" ";G2;" ";H2));
+									CONCATENAR(A2;" ";B2;" ";C2;" ";PROCV(D2;TABELA_B500;2;FALSO);" ";E2;" ";F2;" ";G2;" ";H2));
+										CONCATENAR(A2;" ";B2;" ";C2;" ";D2;" ";PROCV(E2;TABELA_B500;2;FALSO);" ";F2;" ";G2;" ";H2));
+											CONCATENAR(A2;" ";B2;" ";C2;" ";D2;" ";E2;" ";PROCV(F2;TABELA_B500;2;FALSO);" ";G2;" ";H2));
+												CONCATENAR(A2;" ";B2;" ";C2;" ";D2;" ";E2;" ";F2;" ";PROCV(G2;TABELA_B500;2;FALSO);" ";H2));
+	"")
+;
+	SE(G2<>"";
+		SE(G2<>"";
+			SE(ÉERROS(PROCV(F2;TABELA_B500;2;FALSO));
+				SE(ÉERROS(PROCV(E2;TABELA_B500;2;FALSO));
+					SE(ÉERROS(PROCV(D2;TABELA_B500;2;FALSO));
+						SE(ÉERROS(PROCV(C2;TABELA_B500;2;FALSO));
+							CONCATENAR(A2;" ";B2;" ";C2;" ";D2;" ";E2;" ";F2;" ";G2);
+								CONCATENAR(A2;" ";B2;" ";PROCV(C2;TABELA_B500;2;FALSO);" ";D2;" ";E2;" ";F2;" ";G2));
+									CONCATENAR(A2;" ";B2;" ";C2;" ";PROCV(D2;TABELA_B500;2;FALSO);" ";E2;" ";F2;" ";G2));
+										CONCATENAR(A2;" ";B2;" ";C2;" ";D2;" ";PROCV(E2;TABELA_B500;2;FALSO);" ";F2;" ";G2));
+											CONCATENAR(A2;" ";B2;" ";C2;" ";D2;" ";E2;" ";PROCV(F2;TABELA_B500;2;FALSO);" ";G2));
+		"")
+	;
+		SE(F2<>"";
+			SE(F2<>"";
+				SE(ÉERROS(PROCV(C2;TABELA_B500;2;FALSO));
+					SE(ÉERROS(PROCV(D2;TABELA_B500;2;FALSO));
+						SE(ÉERROS(PROCV(E2;TABELA_B500;2;FALSO));
+							CONCATENAR(A2;" ";B2;" ";C2;" ";D2;" ";E2;" ";F2);
+								CONCATENAR(A2;" ";B2;" ";C2;" ";D2;" ";PROCV(E2;TABELA_B500;2;FALSO);" ";F2));
+									CONCATENAR(A2;" ";B2;" ";C2;" ";PROCV(D2;TABELA_B500;2;FALSO);" ";E2;" ";F2));
+										CONCATENAR(A2;" ";B2;" ";PROCV(C2;TABELA_B500;2;FALSO);" ";D2;" ";E2;" ";F2));
+			"")
+		;
+			SE(E2<>"";
+				SE(E2<>"";
+					SE(ÉERROS(PROCV(C2;TABELA_B500;2;FALSO));
+						SE(ÉERROS(PROCV(D2;TABELA_B500;2;FALSO));
+							CONCATENAR(A2;" ";B2;" ";C2;" ";D2;" ";E2);
+								CONCATENAR(A2;" ";B2;" ";C2;" ";PROCV(D2;TABELA_B500;2;FALSO);" ";E2));
+									CONCATENAR(A2;" ";B2;" ";PROCV(C2;TABELA_B500;2;FALSO);" ";D2;" ";E2));
+				"")
+			;
+				SE(D2<>"";
+				SE(ÉERROS(PROCV(C2;TABELA_B500;2;FALSO));
+					CONCATENAR(A2;" ";B2;" ";C2;" ";D2);
+						SE(D2<>"";
+							CONCATENAR(A2;" ";B2;" ";PROCV(C2;TABELA_B500;2;FALSO);" ";D2);
+								CONCATENAR(A2;" ";B2;" ";C2;" ";D2))
+				)
+				;
+					SE(C2<>"";
+						CONCATENAR(A2;" ";B2;" ";C2);
+							SE(B2<>"";
+								CONCATENAR(A2;" ";B2);
+"")))))))
+
+
+///////////////////////
+
+
+=SE(PARENTESCO="";
+	"FALTA O PARENTESCO";
+		SE(PARENTESCO="MÃE";
+			"PARENTESCO MÃE";
+				SE(PARENTESCO="PAI";
+					"PARENTESCO PAI";
+					"")
+))
+
+/////////////////////////////////
+
+AME-UMESCA
+=SE(E20="352";"PRIMEIRA VIA";
+	SE(E20="356";"SEGUNDA VIA";
+		SE(E20="358";"ANTENA";
+			SE(E20="355";"REIMPRESSÃO";
+				SE(E20="359";"CORREÇÃO";
+					SE(E20="";"";
+						SE(E20="402";"PRIMEIRA VIA";
+							SE(E20="406";"SEGUNDA VIA";
+								SE(E20="408";"ANTENA";
+									SE(E20="405";"REIMPRESSÃO";
+										SE(E20="409";"CORREÇÃO";
+											"FALSO")
+
+))))))))))
+
+///////////////////
+
+DEFINIR O PRIMEIRO DIA DO MÊS
+=SE(JAN!AQ3="SÁB";
+	"DOM";
+	SE(JAN!AQ3="DOM";
+		"SEG";
+		SE(JAN!AQ3="SEG";
+			"TER";
+			SE(JAN!AQ3="TER";
+				"QUA";
+				SE(JAN!AQ3="QUA";
+					"QUI";
+					SE(JAN!AQ3="QUI";
+						"SEX";
+						SE(JAN!AQ3="SEX";
+							"SÁB";
+							"")))))))
+
+
