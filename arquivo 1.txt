@@ -1,4 +1,5 @@
-Desenvolvendo um lógica para a abreviação de nomes
+Por: Alexsandro Façanha
+Está lógica desenvolvida para tabelas Excel do MS na versão 2010 realiza a abreviação de nomes.
 
 
 PRIMEIRO PASSO
